@@ -369,6 +369,8 @@ public class DigitalSTROMBinding extends
 							}
 							addHighPriorityJob(new DeviceSensorValueJob(
 									device, sensorIndex));
+							
+							lastUpdateMap.put(itemName, System.currentTimeMillis());
 						}	
 						
 					}
