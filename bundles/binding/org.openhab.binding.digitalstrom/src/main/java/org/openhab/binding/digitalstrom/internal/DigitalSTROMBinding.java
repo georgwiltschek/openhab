@@ -1795,6 +1795,9 @@ public class DigitalSTROMBinding extends
 		private final String INVALID_SESSION = "Invalid session!";// Invalid
 																	// session!
 
+		private final String TOKEN_NOT_FOUND = "Token " + 11 + " not found!";
+
+		
 		private HttpTransport transport = null;
 		private JSONResponseHandler handler = null;
 
@@ -1873,6 +1876,13 @@ public class DigitalSTROMBinding extends
 						} else if (errorStr != null) {
 							logger.error("Unknown error message in event response: "
 									+ errorStr);
+							
+							if (errorStr.toLowerCase().trim().equals(TOKEN_NOT_FOUND.toLowerCase().trim()))
+							{
+								logger.info("XXXXXXXXX TOKEN NOT FOUND LOGIN SUBSCRIBE");
+								login();
+								subscribe();
+							}
 						}
 					}
 				}
