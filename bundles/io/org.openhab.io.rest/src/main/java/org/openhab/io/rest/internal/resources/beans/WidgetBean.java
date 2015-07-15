@@ -35,6 +35,11 @@ public class WidgetBean {
 	public String icon;
 	public String labelcolor;
 	public String valuecolor;
+	
+	public String customType;
+	public String itemcolor;
+	public String fav;
+	public String ignore;
 
 	// widget-specific attributes
 	@XmlElement(name="mapping")
@@ -54,7 +59,6 @@ public class WidgetBean {
 	
 	public ItemBean item;
 	public PageBean linkedPage;
-
 
 	// only for frames, other linkable widgets link to a page
 	@XmlElement(name="widget")

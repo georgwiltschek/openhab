@@ -307,6 +307,9 @@ public class SitemapResource {
 		bean.valuecolor = itemUIRegistry.getValueColor(widget);
     	bean.label = itemUIRegistry.getLabel(widget);
     	bean.type = widget.eClass().getName();
+    	
+    	bean.customType = widget.getCustomType();
+    	
     	if (widget instanceof LinkableWidget) {
 			LinkableWidget linkableWidget = (LinkableWidget) widget;
 			EList<Widget> children = itemUIRegistry.getChildren(linkableWidget);
@@ -328,6 +331,11 @@ public class SitemapResource {
 		}
     	if(widget instanceof Switch) {
     		Switch switchWidget = (Switch) widget;
+    		
+    		bean.fav = switchWidget.getFav();
+    		bean.ignore = switchWidget.getIgnore();
+    		bean.itemcolor = switchWidget.getItemcolor();
+    		
     		for(Mapping mapping : switchWidget.getMappings()) {
     			MappingBean mappingBean = new MappingBean();
 				// Remove quotes - if they exist
