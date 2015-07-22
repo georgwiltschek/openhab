@@ -48,30 +48,32 @@ import org.quartz.Trigger;
 import org.quartz.impl.StdSchedulerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.teleal.cling.DefaultUpnpServiceConfiguration;
-import org.teleal.cling.UpnpService;
-import org.teleal.cling.UpnpServiceImpl;
-import org.teleal.cling.controlpoint.SubscriptionCallback;
-import org.teleal.cling.model.gena.CancelReason;
-import org.teleal.cling.model.gena.GENASubscription;
-import org.teleal.cling.model.message.UpnpResponse;
-import org.teleal.cling.model.message.header.UDAServiceTypeHeader;
-import org.teleal.cling.model.message.header.UDNHeader;
-import org.teleal.cling.model.meta.LocalDevice;
-import org.teleal.cling.model.meta.RemoteDevice;
-import org.teleal.cling.model.meta.Service;
-import org.teleal.cling.model.state.StateVariableValue;
-import org.teleal.cling.model.types.UDAServiceId;
-import org.teleal.cling.model.types.UDAServiceType;
-import org.teleal.cling.model.types.UDN;
-import org.teleal.cling.registry.Registry;
-import org.teleal.cling.registry.RegistryListener;
-import org.teleal.cling.transport.impl.apache.StreamClientConfigurationImpl;
-import org.teleal.cling.transport.impl.apache.StreamServerConfigurationImpl;
-import org.teleal.cling.transport.impl.apache.StreamServerImpl;
-import org.teleal.cling.transport.spi.NetworkAddressFactory;
-import org.teleal.cling.transport.spi.StreamClient;
-import org.teleal.cling.transport.spi.StreamServer;
+
+import org.fourthline.cling.DefaultUpnpServiceConfiguration;
+import org.fourthline.cling.UpnpService;
+import org.fourthline.cling.UpnpServiceImpl;
+import org.fourthline.cling.controlpoint.SubscriptionCallback;
+import org.fourthline.cling.model.gena.CancelReason;
+import org.fourthline.cling.model.gena.GENASubscription;
+import org.fourthline.cling.model.message.UpnpResponse;
+import org.fourthline.cling.model.message.header.UDAServiceTypeHeader;
+import org.fourthline.cling.model.message.header.UDNHeader;
+import org.fourthline.cling.model.meta.LocalDevice;
+import org.fourthline.cling.model.meta.RemoteDevice;
+import org.fourthline.cling.model.meta.Service;
+import org.fourthline.cling.model.state.StateVariableValue;
+import org.fourthline.cling.model.types.UDAServiceId;
+import org.fourthline.cling.model.types.UDAServiceType;
+import org.fourthline.cling.model.types.UDN;
+import org.fourthline.cling.registry.Registry;
+import org.fourthline.cling.registry.RegistryListener;
+import org.fourthline.cling.transport.impl.apache.StreamClientConfigurationImpl;
+import org.fourthline.cling.transport.impl.apache.StreamServerConfigurationImpl;
+import org.fourthline.cling.transport.impl.apache.StreamServerImpl;
+import org.fourthline.cling.transport.spi.NetworkAddressFactory;
+import org.fourthline.cling.transport.spi.StreamClient;
+import org.fourthline.cling.transport.spi.StreamServer;
+
 import org.xml.sax.SAXException;
 
 /**
@@ -163,7 +165,7 @@ implements ManagedService {
 		@SuppressWarnings("rawtypes")
 		@Override
 		public StreamClient createStreamClient() {
-			return new StreamClientImpl(new StreamClientConfigurationImpl());
+			return new StreamClientImpl(new StreamClientConfigurationImpl(null));
 		}
 
 		@SuppressWarnings("rawtypes")

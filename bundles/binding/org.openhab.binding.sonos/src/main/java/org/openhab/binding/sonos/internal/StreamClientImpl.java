@@ -38,16 +38,16 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.util.EntityUtils;
-import org.teleal.cling.model.message.StreamRequestMessage;
-import org.teleal.cling.model.message.StreamResponseMessage;
-import org.teleal.cling.model.message.UpnpHeaders;
-import org.teleal.cling.model.message.UpnpMessage;
-import org.teleal.cling.model.message.UpnpRequest;
-import org.teleal.cling.model.message.UpnpResponse;
-import org.teleal.cling.transport.impl.apache.HeaderUtil;
-import org.teleal.cling.transport.impl.apache.StreamClientConfigurationImpl;
-import org.teleal.cling.transport.spi.InitializationException;
-import org.teleal.cling.transport.spi.StreamClient;
+import org.fourthline.cling.model.message.StreamRequestMessage;
+import org.fourthline.cling.model.message.StreamResponseMessage;
+import org.fourthline.cling.model.message.UpnpHeaders;
+import org.fourthline.cling.model.message.UpnpMessage;
+import org.fourthline.cling.model.message.UpnpRequest;
+import org.fourthline.cling.model.message.UpnpResponse;
+import org.fourthline.cling.transport.impl.apache.HeaderUtil;
+import org.fourthline.cling.transport.impl.apache.StreamClientConfigurationImpl;
+import org.fourthline.cling.transport.spi.InitializationException;
+import org.fourthline.cling.transport.spi.StreamClient;
 import org.teleal.common.util.Exceptions;
 
 /**
@@ -71,8 +71,8 @@ public class StreamClientImpl implements StreamClient<StreamClientConfigurationI
         this.configuration = configuration;
 
         ConnManagerParams.setMaxTotalConnections(globalParams, getConfiguration().getMaxTotalConnections());
-        HttpConnectionParams.setConnectionTimeout(globalParams, getConfiguration().getConnectionTimeoutSeconds() * 1000);
-        HttpConnectionParams.setSoTimeout(globalParams, getConfiguration().getDataReadTimeoutSeconds() * 1000);
+        HttpConnectionParams.setConnectionTimeout(globalParams, getConfiguration().getTimeoutSeconds() * 1000);
+        HttpConnectionParams.setSoTimeout(globalParams, 10 * 1000); // default https://github.com/bgw/UPnP-TestApp/blob/master/lib-src/org/teleal/cling/transport/impl/StreamClientConfigurationImpl.java
         HttpProtocolParams.setContentCharset(globalParams, getConfiguration().getContentCharset());
         if(getConfiguration().getSocketBufferSize() != -1) {
         	
